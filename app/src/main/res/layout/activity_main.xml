@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xw.sample.encrypthelper.MainActivity">
+
+    <EditText
+        android:id="@+id/input_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="32dp"
+        android:inputType="textMultiLine"
+        android:maxLines="2"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/encrypt_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Encrypt"
+        android:textAllCaps="false"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_edit"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="The encrypted text:"
+        app:layout_constraintLeft_toLeftOf="@+id/encrypt_button"
+        app:layout_constraintTop_toBottomOf="@+id/encrypt_button"/>
+
+    <TextView
+        android:id="@+id/encrypted_text"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/encrypt_button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/encrypt_button"
+        tools:text="hello world."/>
+
+    <Button
+        android:id="@+id/decrypt_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:text="Decrypt"
+        android:textAllCaps="false"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/encrypted_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="The decrypted text:"
+        app:layout_constraintLeft_toLeftOf="@+id/decrypt_button"
+        app:layout_constraintTop_toBottomOf="@+id/decrypt_button"/>
+
+    <TextView
+        android:id="@+id/decrypted_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/decrypt_button"
+        app:layout_constraintTop_toBottomOf="@+id/decrypt_button"
+        tools:text="hello world."/>
+</android.support.constraint.ConstraintLayout>
