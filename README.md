@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/badge/License-Apache%202.0-brightgreen.svg?style=flat)](https://opensource.org/licenses/Apache-2.0)
 
 # EncryptHelper
-Android data localized safety encryption/decryption tool.  
+Android data localized safely encryption/decryption tool.
 数据安全本地化加密解密工具。
 
 ![demo1](https://github.com/woxingxiao/EncryptHelper/blob/master/screenshot/demo1.jpg)
@@ -21,7 +21,7 @@ root project:`build.gradle`
 app:`build.gradle`
 ```groovy
   dependencies {
-     // e.g. compile 'com.github.woxingxiao:EncryptHelper:1.0''
+     // e.g. compile 'com.github.woxingxiao:EncryptHelper:1.1'
      compile 'com.github.woxingxiao:EncryptHelper:${LATEST_VERSION}'
   }
 ```
