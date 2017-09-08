@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xw.repo.EncryptHelper;
+import com.xw.repo.security.EncryptHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
