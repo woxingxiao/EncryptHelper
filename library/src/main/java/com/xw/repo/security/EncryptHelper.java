@@ -30,12 +30,15 @@ import javax.security.auth.x500.X500Principal;
 /**
  * EncryptHelper
  * <p>
- * AES（非对称加密）的Key想要存在KeyStore里，需要Api 23才被支持，但是RSA（非对称加密）不受限制（Api >= 18）。
- * 因此用RSA加密AES的密钥保存到本地（如SharedPreferences），需要时解密得到AES的密钥，在用AES密钥来加解密。
+ * AES（对称加密）的Key想要保存在KeyStore里，需要Api 23才被支持，但是RSA（非对称加密）不受限制（Api >= 18）。
+ * 因此使用RSA加密AES Key（对称加密密钥）保存到本地（本库保存在SharedPreferences），需要时使用RSA解密AES Key，
+ * 最终使用解密后的AES Key来加密和解密。
  * <p>
- * 1.使用KeyStore生成随机的RSA Key（非对称加密密钥）；<br>
- * 2.生成AES Key（对称加密密钥），并用RSA PublicKey（公钥）加密后存入SharedPreferences；<br>
- * 3.从SharedPreferences取出AES Key，并用RSA PrivateKey（私钥）解密，用AES Key来加密和解密。<br>
+ * 过程：
+ * <p>
+ * 1.使用KeyStore生成随机的RSA Key（非对称加密密钥，包含公钥和私钥，Alias本库使用应用的包名）；<br>
+ * 2.生成AES Key，并用RSA PublicKey（公钥）加密后存入SharedPreferences；<br>
+ * 3.从SharedPreferences取出AES Key，并用RSA PrivateKey（私钥）解密，最终使用解密后的AES Key来加密和解密。<br>
  * <p>
  * Created by woxingxiao on 2017-09-01.
  */
@@ -204,5 +207,4 @@ public class EncryptHelper {
         String prefIV = mSharedPreferences.getString(KEY_IV, "");
         return Base64.decode(prefIV, Base64.DEFAULT);
     }
-
 }

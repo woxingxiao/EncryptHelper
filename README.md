@@ -21,18 +21,19 @@ root project:`build.gradle`
 app:`build.gradle`
 ```groovy
   dependencies {
-     // e.g. compile 'com.github.woxingxiao:EncryptHelper:1.1'
+     // e.g. compile 'com.github.woxingxiao:EncryptHelper:1.2'
      compile 'com.github.woxingxiao:EncryptHelper:${LATEST_VERSION}'
   }
 ```
 
 # Theory
-AES（非对称加密）的Key想要存在KeyStore里，需要Api 23才被支持，但是RSA（非对称加密）不受限制（Api >= 18）。
-因此用RSA加密AES的密钥保存到本地（如SharedPreferences），需要时解密得到AES的密钥，在用AES密钥来加解密。  
+AES（对称加密）的Key想要保存在KeyStore里，需要Api 23才被支持，但是RSA（非对称加密）不受限制（Api >= 18）。
+因此使用RSA加密AES Key（对称加密密钥）保存到本地（本库保存在`SharedPreferences`），需要时使用RSA解密AES Key，
+最终使用解密后的AES Key来加密和解密。
 过程：
-1. 使用KeyStore生成随机的RSA Key（非对称加密密钥）；
-2. 生成AES Key（对称加密密钥），并用RSA PublicKey（公钥）加密后存入SharedPreferences；
-3. 从SharedPreferences取出AES Key，并用RSA PrivateKey（私钥）解密，用AES Key来加密和解密。
+1. 使用KeyStore生成随机的RSA Key（非对称加密密钥，包含公钥和私钥，Alias本库使用应用的包名）；
+2. 生成AES Key，并用RSA PublicKey（公钥）加密后存入`SharedPreferences`；
+3. 从`SharedPreferences`取出AES Key，并用RSA PrivateKey（私钥）解密AES Key，使用解密后的AES Key来加密和解密。
 
 # Usage (Api >= 18)
 ```java
